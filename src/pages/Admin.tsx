@@ -52,7 +52,7 @@ const Admin = () => {
             <div className="mb-8">
               <Button 
                 onClick={() => setIsEditing(true)}
-                className="bg-emerald-600 hover:bg-emerald-700"
+                className="bg-blue-600 hover:bg-blue-700"
               >
                 Adicionar Novo Projeto
               </Button>
@@ -83,7 +83,7 @@ const Admin = () => {
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
-                        <Badge key={tech} variant="secondary">
+                        <Badge key={tech} variant="secondary" className="bg-gray-100 text-gray-700">
                           {tech}
                         </Badge>
                       ))}
@@ -162,7 +162,7 @@ const Admin = () => {
               </div>
               
               <div className="flex gap-4 pt-4">
-                <Button onClick={handleSave} className="bg-emerald-600 hover:bg-emerald-700">
+                <Button onClick={handleSave} className="bg-blue-600 hover:bg-blue-700">
                   Salvar
                 </Button>
                 <Button onClick={handleCancel} variant="outline">
