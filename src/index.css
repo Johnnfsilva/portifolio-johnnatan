@@ -23,7 +23,7 @@
     --muted: 248 250 252;
     --muted-foreground: 100 116 139;
 
-    --accent: 16 185 129;
+    --accent: 59 130 246;
     --accent-foreground: 255 255 255;
 
     --destructive: 239 68 68;
@@ -51,6 +51,6 @@
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 to-emerald-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-600 to-gray-600 bg-clip-text text-transparent;
   }
 }
