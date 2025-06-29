@@ -50,7 +50,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         
         <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.slice(0, 3).map((tech) => (
-            <Badge key={tech} variant="secondary" className="text-xs bg-blue-100 text-blue-800 hover:bg-blue-200">
+            <Badge key={tech} variant="secondary" className="text-xs bg-gray-100 text-gray-700 hover:bg-gray-200">
               {tech}
             </Badge>
           ))}
@@ -117,7 +117,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 <h4 className="font-semibold mb-2 text-gray-900">Tecnologias Utilizadas</h4>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+                    <Badge key={tech} variant="secondary" className="bg-gray-100 text-gray-700 hover:bg-gray-200">
                       {tech}
                     </Badge>
                   ))}
