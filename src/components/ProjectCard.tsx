@@ -50,12 +50,12 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         
         <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.slice(0, 3).map((tech) => (
-            <Badge key={tech} variant="secondary" className="text-xs">
+            <Badge key={tech} variant="secondary" className="text-xs bg-blue-100 text-blue-800 hover:bg-blue-200">
               {tech}
             </Badge>
           ))}
           {project.technologies.length > 3 && (
-            <Badge variant="outline" className="text-xs">
+            <Badge variant="outline" className="text-xs border-gray-300 text-gray-600">
               +{project.technologies.length - 3}
             </Badge>
           )}
@@ -117,7 +117,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 <h4 className="font-semibold mb-2 text-gray-900">Tecnologias Utilizadas</h4>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="secondary">
+                    <Badge key={tech} variant="secondary" className="bg-blue-100 text-blue-800 hover:bg-blue-200">
                       {tech}
                     </Badge>
                   ))}
@@ -127,14 +127,14 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               {/* Links */}
               <div className="flex gap-4">
                 {project.link && (
-                  <Button asChild>
+                  <Button asChild className="bg-blue-600 hover:bg-blue-700">
                     <a href={project.link} target="_blank" rel="noopener noreferrer">
                       Ver Projeto
                     </a>
                   </Button>
                 )}
                 {project.github && (
-                  <Button variant="outline" asChild>
+                  <Button variant="outline" asChild className="border-gray-300 text-gray-700 hover:bg-gray-50">
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
                       Ver Código
                     </a>
