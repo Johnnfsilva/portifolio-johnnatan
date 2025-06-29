@@ -63,7 +63,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white">
+            <Button className="w-full bg-gradient-to-r from-blue-600 to-gray-600 hover:from-blue-700 hover:to-gray-700 text-white">
               Ver Detalhes
             </Button>
           </DialogTrigger>
