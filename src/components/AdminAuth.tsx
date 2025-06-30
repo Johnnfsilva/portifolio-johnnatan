@@ -12,14 +12,13 @@ interface AdminAuthProps {
 
 const AdminAuth = ({ onAuthenticated }: AdminAuthProps) => {
   const [step, setStep] = useState<'email' | 'code'>('email');
-  const [email, setEmail] = useState('');
+  const email = 'johnatan.silva@hotmail.com'; // Email fixo
   const [code, setCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { sendCode, verifyCode } = useAdminAuth();
 
   const handleSendCode = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
 
     setIsLoading(true);
     const result = await sendCode(email);
@@ -74,7 +73,7 @@ const AdminAuth = ({ onAuthenticated }: AdminAuthProps) => {
           </CardTitle>
           <p className="text-blue-100 mt-2">
             {step === 'email' 
-              ? 'Digite seu email para receber o código de acesso' 
+              ? 'Clique para receber o código de acesso' 
               : 'Digite o código enviado para seu email'}
           </p>
         </CardHeader>
@@ -87,10 +86,8 @@ const AdminAuth = ({ onAuthenticated }: AdminAuthProps) => {
                 <Input
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="seu-email@exemplo.com"
-                  className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  required
+                  readOnly
+                  className="border-gray-300 bg-gray-100 text-gray-700"
                 />
               </div>
               
