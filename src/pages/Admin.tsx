@@ -60,10 +60,10 @@ const Admin = () => {
             <p className="text-gray-600">Gerencie seus projetos e informações do portfólio</p>
           </div>
           <div className="flex gap-2">
-            <Button onClick={logout} variant="outline">
+            <Button onClick={logout} variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
               Sair
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
               <Link to="/">
                 Voltar ao Portfólio
               </Link>
@@ -77,7 +77,7 @@ const Admin = () => {
             <div className="mb-8">
               <Button 
                 onClick={() => setIsEditing(true)}
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-blue-600 hover:bg-blue-700 text-white"
               >
                 Adicionar Novo Projeto
               </Button>
@@ -88,17 +88,18 @@ const Admin = () => {
               <h2 className="text-2xl font-semibold text-gray-900">Projetos Existentes</h2>
               
               {projects.map((project) => (
-                <Card key={project.id} className="hover:shadow-lg transition-shadow">
+                <Card key={project.id} className="hover:shadow-lg transition-shadow bg-white border-gray-200">
                   <CardHeader>
                     <div className="flex justify-between items-start">
                       <div>
-                        <CardTitle className="text-xl">{project.title}</CardTitle>
+                        <CardTitle className="text-xl text-gray-900">{project.title}</CardTitle>
                         <p className="text-gray-600 mt-2">{project.summary}</p>
                       </div>
                       <Button 
                         onClick={() => handleEdit(project)}
                         variant="outline"
                         size="sm"
+                        className="border-blue-600 text-blue-600 hover:bg-blue-50"
                       >
                         Editar
                       </Button>
@@ -108,7 +109,7 @@ const Admin = () => {
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
-                        <Badge key={tech} variant="secondary" className="bg-gray-100 text-gray-700">
+                        <Badge key={tech} variant="secondary" className="bg-gray-100 text-gray-700 border-gray-200">
                           {tech}
                         </Badge>
                       ))}
@@ -125,72 +126,75 @@ const Admin = () => {
           </>
         ) : (
           /* Edit Form */
-          <Card className="max-w-4xl mx-auto">
-            <CardHeader>
-              <CardTitle>
+          <Card className="max-w-4xl mx-auto bg-white border-gray-200 shadow-lg">
+            <CardHeader className="bg-gradient-to-r from-blue-600 to-gray-600 text-white rounded-t-lg">
+              <CardTitle className="text-2xl">
                 {selectedProject ? 'Editar Projeto' : 'Novo Projeto'}
               </CardTitle>
             </CardHeader>
             
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 p-6 bg-gray-50">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Título</label>
+                  <label className="block text-sm font-medium mb-2 text-gray-700">Título</label>
                   <Input 
                     placeholder="Título do projeto"
                     defaultValue={selectedProject?.title || ''}
+                    className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Link do Projeto</label>
+                  <label className="block text-sm font-medium mb-2 text-gray-700">Link do Projeto</label>
                   <Input 
                     placeholder="https://exemplo.com"
                     defaultValue={selectedProject?.link || ''}
+                    className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                   />
                 </div>
               </div>
               
               <div>
-                <label className="block text-sm font-medium mb-2">Resumo</label>
+                <label className="block text-sm font-medium mb-2 text-gray-700">Resumo</label>
                 <Textarea 
                   placeholder="Resumo breve do projeto"
                   defaultValue={selectedProject?.summary || ''}
-                  className="h-20"
+                  className="h-20 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium mb-2">Descrição Detalhada</label>
+                <label className="block text-sm font-medium mb-2 text-gray-700">Descrição Detalhada</label>
                 <Textarea 
                   placeholder="Descrição completa do projeto"
                   defaultValue={selectedProject?.description || ''}
-                  className="h-32"
+                  className="h-32 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium mb-2">Tecnologias (separadas por vírgula)</label>
+                <label className="block text-sm font-medium mb-2 text-gray-700">Tecnologias (separadas por vírgula)</label>
                 <Input 
                   placeholder="React, Node.js, PostgreSQL"
                   defaultValue={selectedProject?.technologies.join(', ') || ''}
+                  className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium mb-2">URLs das Mídias (uma por linha)</label>
+                <label className="block text-sm font-medium mb-2 text-gray-700">URLs das Mídias (uma por linha)</label>
                 <Textarea 
                   placeholder="https://exemplo.com/imagem1.jpg&#10;https://exemplo.com/imagem2.jpg"
                   defaultValue={selectedProject?.media.map(m => m.url).join('\n') || ''}
-                  className="h-24"
+                  className="h-24 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
               
               <div className="flex gap-4 pt-4">
-                <Button onClick={handleSave} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={handleSave} className="bg-blue-600 hover:bg-blue-700 text-white">
                   Salvar
                 </Button>
-                <Button onClick={handleCancel} variant="outline">
+                <Button onClick={handleCancel} variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
                   Cancelar
                 </Button>
               </div>
