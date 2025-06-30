@@ -23,7 +23,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
   return (
     <Card 
-      className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-scale-in"
+      className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-scale-in bg-white border-gray-200"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
       <CardHeader className="p-0">
@@ -39,8 +39,8 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         )}
       </CardHeader>
       
-      <CardContent className="p-6">
-        <CardTitle className="text-xl mb-3 group-hover:text-blue-600 transition-colors">
+      <CardContent className="p-6 bg-gray-50">
+        <CardTitle className="text-xl mb-3 group-hover:text-blue-600 transition-colors text-gray-900">
           {project.title}
         </CardTitle>
         
