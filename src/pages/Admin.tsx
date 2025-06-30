@@ -1,15 +1,11 @@
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Badge } from '@/components/ui/badge';
-import { Link } from 'react-router-dom';
-import { projects } from '@/data/portfolio';
 import { Project } from '@/types';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import AdminAuth from '@/components/AdminAuth';
+import AdminHeader from '@/components/admin/AdminHeader';
+import ProjectsList from '@/components/admin/ProjectsList';
+import ProjectForm from '@/components/admin/ProjectForm';
 
 const Admin = () => {
   const { isAuthenticated, isLoading, logout } = useAdminAuth();
@@ -38,6 +34,11 @@ const Admin = () => {
     setIsEditing(true);
   };
 
+  const handleAddProject = () => {
+    setSelectedProject(null);
+    setIsEditing(true);
+  };
+
   const handleSave = () => {
     // Aqui você implementaria a lógica de salvamento
     console.log('Salvando projeto:', selectedProject);
@@ -53,153 +54,23 @@ const Admin = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">Painel Administrativo</h1>
-            <p className="text-gray-600">Gerencie seus projetos e informações do portfólio</p>
-          </div>
-          <div className="flex gap-2">
-            <Button onClick={logout} variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-              Sair
-            </Button>
-            <Button asChild variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-              <Link to="/">
-                Voltar ao Portfólio
-              </Link>
-            </Button>
-          </div>
-        </div>
+        <AdminHeader 
+          onLogout={logout}
+          onAddProject={handleAddProject}
+          isEditing={isEditing}
+        />
 
         {!isEditing ? (
-          <>
-            {/* Add New Project Button */}
-            <div className="mb-8">
-              <Button 
-                onClick={() => setIsEditing(true)}
-                className="bg-blue-600 hover:bg-blue-700 text-white"
-              >
-                Adicionar Novo Projeto
-              </Button>
-            </div>
-
-            {/* Projects List */}
-            <div className="grid gap-6">
-              <h2 className="text-2xl font-semibold text-gray-900">Projetos Existentes</h2>
-              
-              {projects.map((project) => (
-                <Card key={project.id} className="hover:shadow-lg transition-shadow bg-white border-gray-200">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <CardTitle className="text-xl text-gray-900">{project.title}</CardTitle>
-                        <p className="text-gray-600 mt-2">{project.summary}</p>
-                      </div>
-                      <Button 
-                        onClick={() => handleEdit(project)}
-                        variant="outline"
-                        size="sm"
-                        className="border-blue-600 text-blue-600 hover:bg-blue-50"
-                      >
-                        Editar
-                      </Button>
-                    </div>
-                  </CardHeader>
-                  
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech) => (
-                        <Badge key={tech} variant="secondary" className="bg-gray-100 text-gray-700 border-gray-200">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    
-                    <div className="text-sm text-gray-500">
-                      <p>Mídias: {project.media.length}</p>
-                      <p>Criado em: {project.createdAt.toLocaleDateString('pt-BR')}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </>
+          <ProjectsList 
+            onEditProject={handleEdit}
+            onAddProject={handleAddProject}
+          />
         ) : (
-          /* Edit Form */
-          <Card className="max-w-4xl mx-auto bg-white border-gray-200 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-blue-600 to-gray-600 text-white rounded-t-lg">
-              <CardTitle className="text-2xl">
-                {selectedProject ? 'Editar Projeto' : 'Novo Projeto'}
-              </CardTitle>
-            </CardHeader>
-            
-            <CardContent className="space-y-6 p-6 bg-gray-50">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-gray-700">Título</label>
-                  <Input 
-                    placeholder="Título do projeto"
-                    defaultValue={selectedProject?.title || ''}
-                    className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-gray-700">Link do Projeto</label>
-                  <Input 
-                    placeholder="https://exemplo.com"
-                    defaultValue={selectedProject?.link || ''}
-                    className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2 text-gray-700">Resumo</label>
-                <Textarea 
-                  placeholder="Resumo breve do projeto"
-                  defaultValue={selectedProject?.summary || ''}
-                  className="h-20 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2 text-gray-700">Descrição Detalhada</label>
-                <Textarea 
-                  placeholder="Descrição completa do projeto"
-                  defaultValue={selectedProject?.description || ''}
-                  className="h-32 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2 text-gray-700">Tecnologias (separadas por vírgula)</label>
-                <Input 
-                  placeholder="React, Node.js, PostgreSQL"
-                  defaultValue={selectedProject?.technologies.join(', ') || ''}
-                  className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2 text-gray-700">URLs das Mídias (uma por linha)</label>
-                <Textarea 
-                  placeholder="https://exemplo.com/imagem1.jpg&#10;https://exemplo.com/imagem2.jpg"
-                  defaultValue={selectedProject?.media.map(m => m.url).join('\n') || ''}
-                  className="h-24 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                />
-              </div>
-              
-              <div className="flex gap-4 pt-4">
-                <Button onClick={handleSave} className="bg-blue-600 hover:bg-blue-700 text-white">
-                  Salvar
-                </Button>
-                <Button onClick={handleCancel} variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-                  Cancelar
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <ProjectForm 
+            selectedProject={selectedProject}
+            onSave={handleSave}
+            onCancel={handleCancel}
+          />
         )}
       </div>
     </div>
