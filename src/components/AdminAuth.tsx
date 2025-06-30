@@ -67,35 +67,36 @@ const AdminAuth = ({ onAuthenticated }: AdminAuthProps) => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle className="text-center">
+      <Card className="w-full max-w-md bg-white shadow-xl border-gray-200">
+        <CardHeader className="text-center bg-gradient-to-r from-blue-600 to-gray-600 text-white rounded-t-lg">
+          <CardTitle className="text-2xl font-bold">
             Acesso Administrativo
           </CardTitle>
-          <p className="text-center text-gray-600">
+          <p className="text-blue-100 mt-2">
             {step === 'email' 
               ? 'Digite seu email para receber o código de acesso' 
               : 'Digite o código enviado para seu email'}
           </p>
         </CardHeader>
         
-        <CardContent>
+        <CardContent className="p-6 bg-gray-50">
           {step === 'email' ? (
             <form onSubmit={handleSendCode} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
+                <label className="block text-sm font-medium mb-2 text-gray-700">Email</label>
                 <Input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="seu-email@exemplo.com"
+                  className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                   required
                 />
               </div>
               
               <Button 
                 type="submit" 
-                className="w-full"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                 disabled={isLoading}
               >
                 {isLoading ? 'Enviando...' : 'Enviar Código'}
@@ -104,21 +105,21 @@ const AdminAuth = ({ onAuthenticated }: AdminAuthProps) => {
           ) : (
             <form onSubmit={handleVerifyCode} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Código de Verificação</label>
+                <label className="block text-sm font-medium mb-2 text-gray-700">Código de Verificação</label>
                 <Input
                   type="text"
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
                   placeholder="123456"
                   maxLength={6}
-                  className="text-center text-2xl tracking-widest"
+                  className="text-center text-2xl tracking-widest border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                   required
                 />
               </div>
               
               <Button 
                 type="submit" 
-                className="w-full"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                 disabled={isLoading}
               >
                 {isLoading ? 'Verificando...' : 'Verificar Código'}
@@ -127,7 +128,7 @@ const AdminAuth = ({ onAuthenticated }: AdminAuthProps) => {
               <Button 
                 type="button" 
                 variant="outline"
-                className="w-full"
+                className="w-full border-gray-300 text-gray-700 hover:bg-gray-50"
                 onClick={() => setStep('email')}
               >
                 Voltar
