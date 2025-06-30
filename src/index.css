@@ -53,4 +53,11 @@
   .gradient-text {
     @apply bg-gradient-to-r from-blue-600 to-gray-600 bg-clip-text text-transparent;
   }
+  
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
 }
