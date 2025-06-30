@@ -2,13 +2,13 @@
 import { Project, ContactInfo } from '@/types';
 
 export const contactInfo: ContactInfo = {
-  name: "Johnny Silva",
-  title: "Desenvolvedor Full Stack & Consultor em Tecnologia",
-  email: "contato@johnnysilva.dev",
-  phone: "+55 (11) 99999-9999",
-  linkedin: "https://www.linkedin.com/in/johnnfsilva/",
-  photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-  summary: "Profissional experiente em desenvolvimento de software com foco em soluções inovadoras e tecnologias emergentes. Especialista em arquitetura de sistemas, desenvolvimento full stack e consultoria estratégica em TI."
+  name: "Johnnatan Silva",
+  title: "Analista Sênior | Automação de Fluxos Power Platform | Dados Estratégicos | Customer Success",
+  email: "Johnnatan.silva@hotmail.com",
+  phone: "+5513997557675",
+  linkedin: "https://www.linkedin.com/in/johnnfsilva",
+  photo: "/lovable-uploads/21a5e3bb-c171-455f-a6bf-056250e49b60.png",
+  summary: "Analista de Informações Gerenciais Sênior com expertise em análise de dados e automação de processos. Especialista em Power BI, Power Automate e Power Apps, transformo dados complexos em insights estratégicos para otimizar decisões e fluxos de trabalho. Desenvolvo soluções escaláveis que promovem inovação e crescimento organizacional."
 };
 
 export const projects: Project[] = [

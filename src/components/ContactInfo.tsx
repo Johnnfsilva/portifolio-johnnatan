@@ -1,5 +1,5 @@
 
-import { Mail, Phone, Linkedin } from 'lucide-react';
+import { Mail, MessageCircle, Linkedin } from 'lucide-react';
 import { contactInfo } from '@/data/portfolio';
 
 const ContactInfo = () => {
@@ -44,11 +44,13 @@ const ContactInfo = () => {
             </a>
             
             <a
-              href={`tel:${contactInfo.phone}`}
+              href={`https://wa.me/${contactInfo.phone.replace(/\D/g, '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-all duration-300 hover:scale-105 shadow-lg text-sm"
             >
-              <Phone size={16} />
-              <span className="font-medium">Telefone</span>
+              <MessageCircle size={16} />
+              <span className="font-medium">WhatsApp</span>
             </a>
             
             <a

@@ -50,12 +50,12 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         
         <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.slice(0, 3).map((tech) => (
-            <Badge key={tech} variant="secondary" className="text-xs bg-gray-100 text-gray-700 hover:bg-gray-200">
+            <Badge key={tech} variant="secondary" className="text-xs bg-blue-100 text-blue-700 hover:bg-blue-200">
               {tech}
             </Badge>
           ))}
           {project.technologies.length > 3 && (
-            <Badge variant="outline" className="text-xs border-gray-300 text-gray-600">
+            <Badge variant="outline" className="text-xs border-blue-300 text-blue-600">
               +{project.technologies.length - 3}
             </Badge>
           )}
