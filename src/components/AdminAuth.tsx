@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -11,15 +11,13 @@ interface AdminAuthProps {
 }
 
 const AdminAuth = ({ onAuthenticated }: AdminAuthProps) => {
-  const [step, setStep] = useState<'email' | 'code'>('email');
+  const [step, setStep] = useState<'send' | 'code'>('send');
   const email = 'johnatan.silva@hotmail.com'; // Email fixo
   const [code, setCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { sendCode, verifyCode } = useAdminAuth();
 
-  const handleSendCode = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const handleSendCode = async () => {
     setIsLoading(true);
     const result = await sendCode(email);
     
@@ -72,33 +70,29 @@ const AdminAuth = ({ onAuthenticated }: AdminAuthProps) => {
             Acesso Administrativo
           </CardTitle>
           <p className="text-blue-100 mt-2">
-            {step === 'email' 
-              ? 'Clique para receber o código de acesso' 
+            {step === 'send' 
+              ? 'Clique para receber o código de acesso no seu email' 
               : 'Digite o código enviado para seu email'}
           </p>
         </CardHeader>
         
         <CardContent className="p-6 bg-gray-50">
-          {step === 'email' ? (
-            <form onSubmit={handleSendCode} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-2 text-gray-700">Email</label>
-                <Input
-                  type="email"
-                  value={email}
-                  readOnly
-                  className="border-gray-300 bg-gray-100 text-gray-700"
-                />
+          {step === 'send' ? (
+            <div className="space-y-4">
+              <div className="text-center">
+                <p className="text-gray-600 mb-4">
+                  O código será enviado para: <strong>{email}</strong>
+                </p>
               </div>
               
               <Button 
-                type="submit" 
+                onClick={handleSendCode}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                 disabled={isLoading}
               >
                 {isLoading ? 'Enviando...' : 'Enviar Código'}
               </Button>
-            </form>
+            </div>
           ) : (
             <form onSubmit={handleVerifyCode} className="space-y-4">
               <div>
@@ -126,9 +120,9 @@ const AdminAuth = ({ onAuthenticated }: AdminAuthProps) => {
                 type="button" 
                 variant="outline"
                 className="w-full border-gray-300 text-gray-700 hover:bg-gray-50"
-                onClick={() => setStep('email')}
+                onClick={() => setStep('send')}
               >
-                Voltar
+                Enviar Novo Código
               </Button>
             </form>
           )}

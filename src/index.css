@@ -44,23 +44,49 @@
     @apply bg-background text-foreground font-inter;
   }
 
-  /* Garantir que toasts não tenham cor amarela */
-  [data-sonner-toaster] [data-sonner-toast] {
+  /* Forçar remoção de qualquer cor amarela dos toasts */
+  .sonner-toaster,
+  [data-sonner-toaster],
+  .sonner-toast,
+  [data-sonner-toast] {
     background-color: white !important;
     border: 1px solid #e2e8f0 !important;
     color: #1e293b !important;
   }
 
-  [data-sonner-toaster] [data-sonner-toast][data-type="success"] {
+  .sonner-toast[data-type="success"],
+  [data-sonner-toast][data-type="success"] {
     background-color: #f0f9ff !important;
     border-color: #3b82f6 !important;
     color: #1e40af !important;
   }
 
-  [data-sonner-toaster] [data-sonner-toast][data-type="error"] {
+  .sonner-toast[data-type="error"],
+  [data-sonner-toast][data-type="error"] {
     background-color: #fef2f2 !important;
     border-color: #ef4444 !important;
     color: #dc2626 !important;
+  }
+
+  /* Remover qualquer cor amarela de notificações */
+  .toast,
+  [data-toast],
+  .toast-title,
+  .toast-description {
+    background-color: white !important;
+    color: #1e293b !important;
+  }
+
+  /* Garantir que nenhum elemento tenha background amarelo */
+  * {
+    background-color: inherit !important;
+  }
+  
+  *[style*="yellow"],
+  *[style*="#ffff"],
+  *[style*="rgb(255, 255, 0)"] {
+    background-color: white !important;
+    color: #1e293b !important;
   }
 }
 
