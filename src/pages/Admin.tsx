@@ -8,10 +8,30 @@ import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
 import { projects } from '@/data/portfolio';
 import { Project } from '@/types';
+import { useAdminAuth } from '@/hooks/useAdminAuth';
+import AdminAuth from '@/components/AdminAuth';
 
 const Admin = () => {
+  const { isAuthenticated, isLoading, logout } = useAdminAuth();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isEditing, setIsEditing] = useState(false);
+
+  // Mostrar loading enquanto verifica autenticação
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Verificando acesso...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Mostrar tela de autenticação se não estiver autenticado
+  if (!isAuthenticated) {
+    return <AdminAuth onAuthenticated={() => {}} />;
+  }
 
   const handleEdit = (project: Project) => {
     setSelectedProject(project);
@@ -39,11 +59,16 @@ const Admin = () => {
             <h1 className="text-3xl font-bold text-gray-900">Painel Administrativo</h1>
             <p className="text-gray-600">Gerencie seus projetos e informações do portfólio</p>
           </div>
-          <Button asChild variant="outline">
-            <Link to="/">
-              Voltar ao Portfólio
-            </Link>
-          </Button>
+          <div className="flex gap-2">
+            <Button onClick={logout} variant="outline">
+              Sair
+            </Button>
+            <Button asChild variant="outline">
+              <Link to="/">
+                Voltar ao Portfólio
+              </Link>
+            </Button>
+          </div>
         </div>
 
         {!isEditing ? (
