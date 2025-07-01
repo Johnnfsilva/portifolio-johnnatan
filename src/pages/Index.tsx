@@ -26,7 +26,7 @@ const Index = () => {
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-gray-400">
-            © 2024 Johnny Silva. Todos os direitos reservados.
+            © 2025 Johnnatan Silva. Todos os direitos reservados.
           </p>
         </div>
       </footer>
