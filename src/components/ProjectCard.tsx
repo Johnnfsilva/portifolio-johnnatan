@@ -32,18 +32,18 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             <img
               src={project.media[0].url}
               alt={project.media[0].alt || project.title}
-              className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-            <div className="absolute bottom-4 left-4 right-4">
-              <h3 className="text-white font-bold text-xl mb-2 drop-shadow-lg">{project.title}</h3>
-            </div>
           </div>
         )}
       </CardHeader>
       
       <CardContent className="p-6">
-        <p className="text-gray-500 mb-4 line-clamp-3 text-sm leading-relaxed">
+        <CardTitle className="text-blue-600 font-bold text-xl mb-3">
+          {project.title}
+        </CardTitle>
+        
+        <p className="text-gray-600 mb-4 text-sm leading-relaxed">
           {project.summary}
         </p>
         
@@ -62,17 +62,18 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             </Button>
           </DialogTrigger>
           
-          <DialogContent className="max-w-5xl max-h-[90vh] overflow-auto bg-white">
-            <DialogHeader className="pb-6 border-b border-gray-100">
-              <DialogTitle className="text-3xl font-bold text-blue-600 mb-3">
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto bg-white">
+            <DialogHeader className="pb-4 border-b border-gray-200">
+              <DialogTitle className="text-2xl font-bold text-blue-600 mb-2">
                 {project.title}
               </DialogTitle>
-              <DialogDescription className="text-gray-600 text-lg leading-relaxed">
-                {project.description}
-              </DialogDescription>
             </DialogHeader>
             
-            <div className="space-y-8 pt-6">
+            <div className="space-y-6 pt-4">
+              <div className="text-gray-600 text-base leading-relaxed">
+                {project.description}
+              </div>
+              
               {/* Media Gallery */}
               {project.media.length > 0 && (
                 <div className="space-y-4">
@@ -90,7 +91,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                         <button
                           key={media.id}
                           onClick={() => setSelectedMedia(index)}
-                          className={`flex-shrink-0 w-24 h-18 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                          className={`flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
                             selectedMedia === index 
                               ? 'border-blue-500 shadow-lg scale-105' 
                               : 'border-gray-200 hover:border-gray-300'
@@ -109,11 +110,11 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               )}
               
               {/* Technologies */}
-              <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
-                <h4 className="font-semibold mb-4 text-blue-600 text-lg">Tecnologias Utilizadas</h4>
-                <div className="flex flex-wrap gap-3">
+              <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                <h4 className="font-semibold mb-3 text-blue-600 text-lg">Tecnologias Utilizadas</h4>
+                <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="bg-blue-100 text-blue-700 hover:bg-blue-200 px-3 py-1 text-sm font-medium border border-blue-200">
+                    <Badge key={tech} variant="secondary" className="bg-blue-100 text-blue-700 hover:bg-blue-200 px-2 py-1 text-sm font-medium border border-blue-200">
                       {tech}
                     </Badge>
                   ))}
