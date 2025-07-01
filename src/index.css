@@ -44,10 +44,31 @@
     @apply bg-background text-foreground font-inter;
   }
 
-  /* Garantir que nunca apareça amarelo */
+  /* Remover qualquer cor amarela completamente */
   * {
-    color: inherit !important;
     background-color: inherit !important;
+  }
+
+  /* Garantir que cores sejam sempre azul ou cinza */
+  .text-yellow-400,
+  .text-yellow-500,
+  .text-yellow-600,
+  .bg-yellow-50,
+  .bg-yellow-100,
+  .bg-yellow-200,
+  .border-yellow-200,
+  .border-yellow-300 {
+    color: #3b82f6 !important;
+    background-color: #dbeafe !important;
+    border-color: #93c5fd !important;
+  }
+
+  /* Forçar cores específicas para elementos de alerta */
+  .alert-warning,
+  .warning {
+    background-color: #dbeafe !important;
+    color: #1e40af !important;
+    border-color: #3b82f6 !important;
   }
 
   /* Forçar cores específicas para toasts */
@@ -72,6 +93,13 @@
     background-color: #fef2f2 !important;
     border-color: #ef4444 !important;
     color: #dc2626 !important;
+  }
+
+  .sonner-toast[data-type="warning"],
+  [data-sonner-toast][data-type="warning"] {
+    background-color: #f0f9ff !important;
+    border-color: #3b82f6 !important;
+    color: #1e40af !important;
   }
 }
 
