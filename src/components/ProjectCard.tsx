@@ -34,16 +34,16 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               alt={project.media[0].alt || project.title}
               className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
             <div className="absolute bottom-4 left-4 right-4">
-              <h3 className="text-white font-bold text-xl mb-2">{project.title}</h3>
+              <h3 className="text-white font-bold text-xl mb-2 drop-shadow-lg">{project.title}</h3>
             </div>
           </div>
         )}
       </CardHeader>
       
       <CardContent className="p-6">
-        <p className="text-gray-600 mb-4 line-clamp-3 text-sm leading-relaxed">
+        <p className="text-gray-500 mb-4 line-clamp-3 text-sm leading-relaxed">
           {project.summary}
         </p>
         
@@ -63,8 +63,8 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           </DialogTrigger>
           
           <DialogContent className="max-w-5xl max-h-[90vh] overflow-auto bg-white">
-            <DialogHeader className="pb-6">
-              <DialogTitle className="text-3xl font-bold text-gray-900 mb-2">
+            <DialogHeader className="pb-6 border-b border-gray-100">
+              <DialogTitle className="text-3xl font-bold text-blue-600 mb-3">
                 {project.title}
               </DialogTitle>
               <DialogDescription className="text-gray-600 text-lg leading-relaxed">
@@ -72,7 +72,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               </DialogDescription>
             </DialogHeader>
             
-            <div className="space-y-8">
+            <div className="space-y-8 pt-6">
               {/* Media Gallery */}
               {project.media.length > 0 && (
                 <div className="space-y-4">
@@ -109,11 +109,11 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               )}
               
               {/* Technologies */}
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <h4 className="font-semibold mb-4 text-gray-900 text-lg">Tecnologias Utilizadas</h4>
+              <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
+                <h4 className="font-semibold mb-4 text-blue-600 text-lg">Tecnologias Utilizadas</h4>
                 <div className="flex flex-wrap gap-3">
                   {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="bg-blue-100 text-blue-800 hover:bg-blue-200 px-3 py-1 text-sm font-medium">
+                    <Badge key={tech} variant="secondary" className="bg-blue-100 text-blue-700 hover:bg-blue-200 px-3 py-1 text-sm font-medium border border-blue-200">
                       {tech}
                     </Badge>
                   ))}
