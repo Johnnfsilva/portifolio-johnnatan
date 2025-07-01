@@ -67,6 +67,9 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               <DialogTitle className="text-2xl font-bold text-blue-600 mb-2">
                 {project.title}
               </DialogTitle>
+              <DialogDescription className="text-gray-600">
+                Detalhes do projeto
+              </DialogDescription>
             </DialogHeader>
             
             <div className="space-y-6 pt-4">

@@ -20,7 +20,7 @@ const ContactInfo = () => {
             {contactInfo.name}
           </h1>
           
-          <p className="text-xl text-blue-700 font-medium mb-6 max-w-3xl mx-auto">
+          <p className="text-xl text-blue-600 font-medium mb-6 max-w-3xl mx-auto">
             {contactInfo.title}
           </p>
           
@@ -44,7 +44,7 @@ const ContactInfo = () => {
             asChild
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
           >
-            <a href={`https://wa.me/5513997557675`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+            <a href="https://wa.me/5513997557675" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               <Phone size={20} />
               WhatsApp
             </a>
