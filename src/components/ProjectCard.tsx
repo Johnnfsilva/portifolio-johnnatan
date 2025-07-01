@@ -28,11 +28,11 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
     >
       <CardHeader className="p-0">
         {project.media.length > 0 && (
-          <div className="relative overflow-hidden">
+          <div className="relative overflow-hidden h-48">
             <img
               src={project.media[0].url}
               alt={project.media[0].alt || project.title}
-              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>
         )}
