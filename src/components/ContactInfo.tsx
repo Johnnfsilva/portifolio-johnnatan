@@ -44,7 +44,7 @@ const ContactInfo = () => {
             asChild
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
           >
-            <a href="https://wa.me/5513997557675" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+            <a href={`https://wa.me/${contactInfo.phone.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               <Phone size={20} />
               WhatsApp
             </a>

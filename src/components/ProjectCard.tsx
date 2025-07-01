@@ -39,7 +39,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       </CardHeader>
       
       <CardContent className="p-6">
-        <CardTitle className="text-blue-600 font-bold text-xl mb-3">
+        <CardTitle className="text-2xl font-bold mb-3 text-blue-600">
           {project.title}
         </CardTitle>
         
@@ -68,7 +68,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 {project.title}
               </DialogTitle>
               <DialogDescription className="text-gray-600">
-                Detalhes do projeto
+                Detalhes completos do projeto
               </DialogDescription>
             </DialogHeader>
             
