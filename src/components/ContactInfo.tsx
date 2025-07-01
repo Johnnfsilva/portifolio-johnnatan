@@ -4,63 +4,63 @@ import { contactInfo } from '@/data/portfolio';
 
 const ContactInfo = () => {
   return (
-    <section className="min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-50 via-gray-50 to-blue-100 px-4 py-8">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 items-center">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-gray-50 px-4 py-16">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         {/* Photo Section */}
         <div className="text-center lg:text-left animate-fade-in">
           <div className="relative inline-block">
             <img
               src={contactInfo.photo}
               alt={contactInfo.name}
-              className="w-56 h-56 md:w-64 md:h-64 lg:w-48 lg:h-48 rounded-full object-cover shadow-2xl mx-auto lg:mx-0"
+              className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-2xl mx-auto lg:mx-0 border-8 border-white"
             />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/20 to-gray-500/20"></div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/10 to-gray-500/10"></div>
           </div>
         </div>
 
         {/* Info Section */}
-        <div className="text-center lg:text-left space-y-4 animate-slide-up">
+        <div className="text-center lg:text-left space-y-6 animate-slide-up">
           <div>
-            <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               {contactInfo.name}
             </h1>
-            <h2 className="text-base lg:text-lg text-blue-600 font-semibold mb-4">
+            <h2 className="text-xl lg:text-2xl text-blue-600 font-semibold mb-6 leading-relaxed">
               {contactInfo.title}
             </h2>
           </div>
 
-          <p className="text-sm lg:text-base text-gray-600 leading-relaxed max-w-xl">
+          <p className="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl">
             {contactInfo.summary}
           </p>
 
           {/* Contact Links */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-8">
             <a
               href={`mailto:${contactInfo.email}`}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 hover:scale-105 shadow-lg text-sm"
+              className="flex items-center gap-3 px-6 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all duration-300 hover:scale-105 shadow-lg font-medium"
             >
-              <Mail size={16} />
-              <span className="font-medium">Email</span>
+              <Mail size={20} />
+              <span>Email</span>
             </a>
             
             <a
               href={`https://wa.me/${contactInfo.phone.replace(/\D/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-all duration-300 hover:scale-105 shadow-lg text-sm"
+              className="flex items-center gap-3 px-6 py-4 bg-gray-700 text-white rounded-xl hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg font-medium"
             >
-              <MessageCircle size={16} />
-              <span className="font-medium">WhatsApp</span>
+              <MessageCircle size={20} />
+              <span>WhatsApp</span>
             </a>
             
             <a
               href={contactInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-all duration-300 hover:scale-105 shadow-lg text-sm"
+              className="flex items-center gap-3 px-6 py-4 bg-blue-800 text-white rounded-xl hover:bg-blue-900 transition-all duration-300 hover:scale-105 shadow-lg font-medium"
             >
-              <Linkedin size={16} />
-              <span className="font-medium">LinkedIn</span>
+              <Linkedin size={20} />
+              <span>LinkedIn</span>
             </a>
           </div>
         </div>

@@ -5,23 +5,23 @@
 
 @layer base {
   :root {
-    --background: 250 250 250;
-    --foreground: 15 23 42;
+    --background: 249 250 251;
+    --foreground: 31 41 55;
 
     --card: 255 255 255;
-    --card-foreground: 15 23 42;
+    --card-foreground: 31 41 55;
 
     --popover: 255 255 255;
-    --popover-foreground: 15 23 42;
+    --popover-foreground: 31 41 55;
 
     --primary: 59 130 246;
     --primary-foreground: 248 250 252;
 
-    --secondary: 241 245 249;
-    --secondary-foreground: 51 65 85;
+    --secondary: 243 244 246;
+    --secondary-foreground: 75 85 99;
 
-    --muted: 248 250 252;
-    --muted-foreground: 100 116 139;
+    --muted: 249 250 251;
+    --muted-foreground: 107 114 128;
 
     --accent: 59 130 246;
     --accent-foreground: 255 255 255;
@@ -29,8 +29,8 @@
     --destructive: 239 68 68;
     --destructive-foreground: 248 250 252;
 
-    --border: 226 232 240;
-    --input: 226 232 240;
+    --border: 229 231 235;
+    --input: 229 231 235;
     --ring: 59 130 246;
 
     --radius: 0.75rem;
@@ -44,14 +44,20 @@
     @apply bg-background text-foreground font-inter;
   }
 
-  /* Forçar remoção de qualquer cor amarela dos toasts */
+  /* Garantir que nunca apareça amarelo */
+  * {
+    color: inherit !important;
+    background-color: inherit !important;
+  }
+
+  /* Forçar cores específicas para toasts */
   .sonner-toaster,
   [data-sonner-toaster],
   .sonner-toast,
   [data-sonner-toast] {
     background-color: white !important;
-    border: 1px solid #e2e8f0 !important;
-    color: #1e293b !important;
+    border: 1px solid #e5e7eb !important;
+    color: #374151 !important;
   }
 
   .sonner-toast[data-type="success"],
@@ -67,32 +73,11 @@
     border-color: #ef4444 !important;
     color: #dc2626 !important;
   }
-
-  /* Remover qualquer cor amarela de notificações */
-  .toast,
-  [data-toast],
-  .toast-title,
-  .toast-description {
-    background-color: white !important;
-    color: #1e293b !important;
-  }
-
-  /* Garantir que nenhum elemento tenha background amarelo */
-  * {
-    background-color: inherit !important;
-  }
-  
-  *[style*="yellow"],
-  *[style*="#ffff"],
-  *[style*="rgb(255, 255, 0)"] {
-    background-color: white !important;
-    color: #1e293b !important;
-  }
 }
 
 @layer utilities {
   .glass-effect {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
+    @apply bg-white/90 backdrop-blur-md border border-gray-200;
   }
   
   .gradient-text {
