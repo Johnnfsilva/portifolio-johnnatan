@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Project } from '@/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -57,12 +56,20 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200">
+            <Button 
+              className="w-full text-white font-medium py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+              style={{ backgroundColor: '#2563eb', borderColor: '#2563eb' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1d4ed8'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+            >
               Ver Detalhes
             </Button>
           </DialogTrigger>
           
-          <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto bg-white">
+          <DialogContent 
+            className="max-w-4xl max-h-[90vh] overflow-auto"
+            style={{ backgroundColor: 'white', border: '1px solid #e5e7eb' }}
+          >
             <DialogHeader className="pb-4 border-b border-gray-200">
               <DialogTitle className="text-2xl font-bold text-blue-600 mb-2">
                 {project.title}

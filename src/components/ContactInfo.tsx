@@ -32,7 +32,8 @@ const ContactInfo = () => {
         <div className="flex flex-wrap justify-center gap-4 animate-slide-up">
           <Button 
             asChild
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+            className="text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+            style={{ backgroundColor: '#2563eb', borderColor: '#2563eb' }}
           >
             <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-2">
               <Mail size={20} />
@@ -42,7 +43,8 @@ const ContactInfo = () => {
           
           <Button 
             asChild
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+            className="text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+            style={{ backgroundColor: '#2563eb', borderColor: '#2563eb' }}
           >
             <a href={`https://wa.me/${contactInfo.phone.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               <Phone size={20} />
@@ -52,7 +54,8 @@ const ContactInfo = () => {
           
           <Button 
             asChild
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+            className="text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+            style={{ backgroundColor: '#2563eb', borderColor: '#2563eb' }}
           >
             <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               <Linkedin size={20} />
